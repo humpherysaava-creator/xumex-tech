@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Xumex Tech builds dependable software, cloud infrastructure, AI systems, and robotics from prototype through production.">
+<meta name="theme-color" content="#0a1b33">
+<title>Xumex Tech — Systems for what's next</title>
+
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0E2340;
+    --bg-deep: #0A1B33;
+    --surface: #123057;
+    --line: #2E4E7C;
+    --line-bright: #5B84BE;
+    --ink: #E7EEF7;
+    --ink-muted: #93A9C7;
+    --accent: #FFB454;
+    --accent-dim: #C98A3C;
+    --cyan: #7DD8D3;
+    --blue: #4C8DFF;
+    --radius: 2px;
+    --display: 'JetBrains Mono', monospace;
+    --body: 'DM Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { 
+    box-sizing: border-box;
+   }
+
+  html { 
+    scroll-behavior: smooth;
+   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { 
+      scroll-behavior: auto; 
+    }
+    * { 
+      animation-duration: 0.001ms !important; 
+      animation-iteration-count: 1 !important; 
+      transition-duration: 0.001ms !important; 
+    }
+  }
+
+  body {
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(93,140,200,0.07) 39px, rgba(93,140,200,0.07) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(93,140,200,0.07) 39px, rgba(93,140,200,0.07) 40px),
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: .035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+  }
+
+  .skip-link { position: fixed; left: 20px; top: -60px; z-index: 100; background: var(--accent); color: var(--bg-deep); padding: 10px 14px; font-family: var(--mono); font-size: 12px; font-weight: 700; text-decoration: none; }
+  .skip-link:focus { top: 18px; }
+
+  a {
+     color: inherit; 
+    }
+
+  .wrap {
+     max-width: 1080px;
+      margin: 0 auto;
+       padding: 0 28px; 
+       position: relative; 
+      }
+
+  .corner { 
+    position: fixed;
+     width: 22px;
+      height: 22px; 
+      border: 1px solid var(--line-bright);
+       opacity: 0.55;
+        z-index: 40;
+         pointer-events:none; 
+        }
+
+  .corner::before, .corner::after {
+     content:''; 
+     position:absolute;
+      background: var(--line-bright);
+     }
+
+  .corner.tl { 
+    top: 18px;
+     left: 18px; 
+     border-right:none;
+      border-bottom:none;
+     }
+
+  .corner.tr { 
+    top: 18px; 
+    right: 18px;
+     border-left:none;
+      border-bottom:none; 
+    }
+
+  .corner.bl { 
+    bottom: 18px; 
+    left: 18px; 
+    border-right:none; 
+    border-top:none; 
+  }
+
+  .corner.br { 
+    bottom: 18px;
+     right: 18px;
+      border-left:none; 
+      border-top:none;
+     }
+
+  @media (max-width: 640px) { 
+    .corner{ 
+      display:none; 
+    } 
+  }
+
+  header {
+    position: sticky;
+     top:0; 
+     z-index: 30;
+    background: rgba(10,27,51,0.85);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav.wrap {
+     display:flex;
+      align-items:center; 
+      justify-content:space-between;
+       height: 68px; 
+      }
+
+  .logo { 
+    font-family:var(--display); 
+    font-weight:700; 
+    letter-spacing: 0.02em; 
+    font-size: 15px; 
+    display:flex; 
+    align-items:center; 
+    gap:10px; 
+    text-decoration: none;
+  }
+
+  .logo .mark {
+    width: 26px;
+     height: 26px; 
+     display:inline-flex; 
+     align-items:center; 
+     justify-content:center;
+    border: 1px solid var(--blue); 
+    font-family: var(--display); 
+    font-weight: 700;
+    font-size: 15px; 
+    color: var(--blue); 
+    background: var(--surface); 
+    flex-shrink:0;
+  }
+
+  .navlinks { 
+    display:flex;
+     gap: 28px; 
+     font-family: 
+     var(--mono); 
+     font-size: 13px; 
+     letter-spacing: 0.03em;
+      color: var(--ink-muted); 
+    }
+
+  .navlinks a { 
+    text-decoration:none; 
+    position:relative; 
+    padding: 4px 0; 
+  }
+
+  .navlinks a:hover, .navlinks a:focus-visible {
+     color: var(--ink); 
+    }
+
+  .navlinks a::after { 
+    content:'';
+     position:absolute; 
+     left:0; 
+     bottom:-2px; 
+     width:0; 
+     height:1px; 
+     background: var(--accent); 
+     transition: width .25s ease; 
+    }
+
+  .navlinks a:hover::after, .navlinks a:focus-visible::after {
+     width:100%; 
+    }
+
+  .trace-col { 
+    position:absolute; 
+    left: -1px; top:0; 
+    bottom:0; 
+    width:1px; 
+    display:none; 
+  }
+
+  @media (min-width: 900px) { 
+    .trace-col { 
+      display:block; 
+    } 
+  }
+
+  .eyebrow {
+    font-family: var(--mono); 
+    font-size: 12px; 
+    letter-spacing: 0.12em; 
+    color: var(--accent);
+    display:flex; 
+    align-items:center; 
+    gap:10px; 
+    margin-bottom: 18px; 
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+     content:''; 
+     width: 24px; 
+     height:1px; 
+     background: var(--accent);
+     }
+
+  section {
+     padding: 120px 0; 
+     border-bottom: 1px solid var(--line); 
+     position: relative; 
+    }
+
+  section:last-of-type { 
+    border-bottom:none; 
+  }
+
+  .hero {
+     padding-top: 140px;
+      padding-bottom: 110px;
+      overflow: hidden;
+    }
+
+  .hero::after { content: 'X'; position: absolute; right: -3vw; top: 20px; font-family: var(--display); font-size: clamp(240px, 38vw, 560px); line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(91,132,190,.13); pointer-events: none; }
+
+  .hero-grid { 
+    display:grid; 
+    grid-template-columns: 1.3fr 0.7fr; 
+    gap: 60px; 
+    align-items:end; 
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 800px) { 
+    .hero-grid{ 
+      grid-template-columns: 1fr; 
+    } 
+  }
+  
+  h1 {
+    font-family: var(--display); 
+    font-weight: 700; 
+    font-size: clamp(34px, 5.4vw, 66px);
+    line-height: 1.04; 
+    letter-spacing: -0.01em; 
+    margin: 0 0 26px;
+  }
+
+  h1 .accent { 
+    color: var(--accent);
+   }
+
+  .hero p.lede { 
+    font-size: 18px; 
+    color: var(--ink-muted);
+     max-width: 46ch; 
+     margin: 0 0 34px; 
+    }
+
+  .cta-row {
+     display:flex; 
+     gap: 16px; 
+     flex-wrap: wrap; 
+    }
+
+  .btn {
+    font-family: var(--mono); 
+    font-size: 13px; 
+    letter-spacing: 0.04em; 
+    text-decoration:none;
+    padding: 14px 22px; 
+    border-radius: var(--radius); 
+    display:inline-flex; 
+    align-items:center; 
+    gap:10px;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease;
+  }
+
+  .btn-primary {
+     background: var(--accent); 
+     color: var(--bg-deep); 
+     font-weight:700; 
+     border: 1px solid var(--accent); 
+    }
+
+  .btn-primary:hover, .btn-primary:focus-visible { 
+    transform: translateY(-2px); 
+  }
+
+  .btn-ghost {
+     border: 1px solid var(--line-bright); 
+     color: var(--ink); 
+    }
+
+  .btn-ghost:hover, .btn-ghost:focus-visible {
+     border-color: var(--accent); 
+     color: var(--accent); 
+    }
+
+  .hero-panel {
+    border: 1px solid var(--line); 
+    background: var(--surface); 
+    padding: 22px;
+    font-family: var(--mono); 
+    font-size: 12px; 
+    color: var(--ink-muted);
+    box-shadow: 12px 12px 0 rgba(10,27,51,.7), 12px 12px 0 1px var(--line);
+  }
+
+  .hero-panel .row {
+     display:flex; 
+     justify-content:space-between; 
+     padding: 9px 0; 
+     border-bottom: 1px dashed var(--line); 
+    }
+
+  .hero-panel .row:last-child { 
+    border-bottom:none;
+   }
+
+  .hero-panel .row span:last-child {
+     color: var(--cyan); 
+    }
+
+  .schematic { 
+    width:100%; 
+    height:auto; 
+    margin-top: 70px; 
+    display:block; 
+  }
+
+  .schematic path.trace {
+    fill:none; 
+    stroke: var(--line-bright); 
+    stroke-width: 1.4;
+    stroke-dasharray: 6 6;
+  }
+
+  .schematic path.trace.active { 
+    stroke: var(--cyan);
+   }
+
+  .schematic circle.node { 
+    fill: var(--bg-deep); 
+    stroke: var(--accent); 
+    stroke-width: 1.6; 
+  }
+
+  .schematic text {
+     font-family: var(--mono); 
+     font-size: 9px; 
+     fill: var(--ink-muted); 
+     letter-spacing: 0.04em;
+     }
+
+  .sec-head {
+     display:flex; 
+     justify-content:space-between; 
+     align-items:flex-end; 
+     gap: 30px; 
+     margin-bottom: 54px; 
+     flex-wrap: wrap; 
+    }
+
+  h2 { 
+    font-family: var(--display); 
+    font-size: clamp(26px, 3.4vw, 38px); 
+    margin: 0; 
+    letter-spacing: -0.01em; 
+  }
+
+  .sec-note { 
+    font-family: var(--mono);
+   font-size: 12px; 
+   color: var(--ink-muted); 
+   max-width: 34ch; 
+   text-align:right;
+   }
+
+  @media (max-width: 700px) { 
+    .sec-note{ 
+      text-align:left; 
+    } 
+  }
+
+  .about-grid { 
+    display:grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 50px; 
+  }
+
+  @media (max-width: 800px) { 
+    .about-grid{ 
+      grid-template-columns: 1fr; 
+    } 
+  }
+  .about-grid p {
+     color: var(--ink-muted); 
+     font-size: 16px; 
+     margin: 0 0 18px; 
+    }
+
+  .pillars { 
+    list-style:none; 
+    margin:0; 
+    padding:0; 
+    display:grid; 
+    gap: 0; 
+    border-top: 1px solid var(--line); 
+  }
+
+  .pillars li { 
+    padding: 18px 0; 
+    border-bottom: 1px solid var(--line); 
+    display:flex; 
+    gap:16px; 
+    align-items:baseline; 
+  }
+
+  .pillars .idx {
+     font-family: var(--mono); 
+     font-size: 12px; 
+     color: var(--accent); 
+    }
+
+  .pillars strong {
+     font-family: var(--display); 
+     font-size: 15px; 
+     display:block; 
+     margin-bottom: 4px; 
+    }
+
+  .pillars span.d {
+     color: var(--ink-muted); 
+     font-size: 14px; 
+    }
+
+  .svc-grid {
+     display:grid; 
+     grid-template-columns: repeat(2, 1fr); 
+     gap: 1px; 
+     background: var(--line); 
+     border: 1px solid var(--line); 
+    }
+
+  @media (max-width: 700px) { 
+    .svc-grid { 
+      grid-template-columns: 1fr; 
+    } 
+  }
+
+  .svc-card {
+     background: var(--bg); 
+     padding: 34px; 
+     position:relative; 
+    transition: background .2s ease; 
+    overflow: hidden;
+    }
+
+  .svc-card::after { content: attr(data-index); position: absolute; right: 18px; bottom: -28px; font-family: var(--display); font-size: 84px; font-weight: 700; color: rgba(91,132,190,.08); transition: transform .3s ease, color .3s ease; }
+  .svc-card:hover::after { transform: translateY(-7px); color: rgba(255,180,84,.1); }
+
+  .svc-card:hover {
+     background: var(--surface); 
+    }
+
+  .svc-card .tag {
+     font-family: var(--mono); 
+     font-size: 11px; 
+     color: var(--accent); 
+     letter-spacing: 0.08em; 
+    }
+
+  .svc-card h3 {
+     font-family: var(--display); 
+     font-size: 19px; 
+     margin: 12px 0 10px; 
+     font-weight: 600; 
+    }
+
+  .svc-card p {
+     color: var(--ink-muted); 
+     font-size: 14.5px; 
+     margin: 0; 
+    }
+
+  .btn-sm {
+     padding: 9px 16px; 
+     font-size: 12px; 
+    }
+
+  .nav-right {
+     display:flex; 
+     align-items:center; 
+     gap: 28px; 
+    }
+
+  @media (max-width: 640px) { 
+    .navlinks{ 
+      display:none; 
+    } 
+  }
+
+  .proj-list {
+     display:grid; 
+     gap: 1px; 
+     background: var(--line); 
+     border: 1px solid var(--line); 
+    }
+
+  .proj-card {
+    background: var(--bg); 
+    padding: 36px; 
+    display:grid; 
+    grid-template-columns: 90px 1fr auto; 
+    gap: 28px; 
+    align-items:center;
+    transition: background .2s ease;
+  }
+
+  .proj-card:hover {
+     background: var(--surface); 
+    }
+
+  @media (max-width: 760px) { 
+    .proj-card { 
+      grid-template-columns: 1fr; gap: 14px; 
+    } 
+  }
+
+  .proj-idx {
+     font-family: var(--mono); 
+     font-size: 13px; 
+     color: var(--accent); 
+     letter-spacing: 0.06em; 
+    }
+
+  .proj-body h3{ 
+    font-family: var(--display); 
+    font-size: 19px; 
+    margin: 0 0 8px; 
+    font-weight: 600; 
+  }
+
+  .proj-body p{
+     color: var(--ink-muted); 
+     font-size: 14.5px; 
+     margin: 0 0 10px; 
+     max-width: 56ch; 
+    }
+
+  .proj-tags{
+     display:flex; 
+     gap: 8px; 
+     flex-wrap: wrap; 
+    }
+
+  .proj-tags span{
+    font-family: var(--mono); 
+    font-size: 10.5px; 
+    color: var(--cyan); 
+    border: 1px solid var(--line-bright);
+    padding: 3px 8px; 
+    letter-spacing: 0.04em;
+  }
+
+  .proj-status{ 
+    font-family: var(--mono); 
+    font-size: 11px; 
+    color: var(--ink-muted); 
+    white-space: nowrap; 
+    text-align:right; 
+  }
+
+  .proj-status .dot{ 
+    display:inline-block; 
+    width:6px; 
+    height:6px; 
+    border-radius:50%; 
+    background: var(--cyan); 
+    margin-right:7px; 
+  }
+
+  @media (max-width: 760px){ 
+    .proj-status{ 
+      text-align:left; 
+    } 
+  }
+
+  .suggest-panel{
+    border: 1px solid var(--line-bright); 
+    background: var(--surface); 
+    padding: 50px;
+  }
+
+  .suggest-top{
+     display:grid; 
+     grid-template-columns: 1fr 1fr; 
+     gap: 50px; 
+     margin-bottom: 40px; 
+    }
+
+  @media (max-width: 800px){ 
+    .suggest-top{ 
+      grid-template-columns: 1fr; gap: 20px; 
+    } 
+  }
+
+  .suggest-top p{
+     color: var(--ink-muted); 
+     margin: 0; 
+     font-size: 15px; 
+    }
+
+  .field{ 
+    margin-bottom: 24px; 
+  }
+
+  .field label{
+    display:block; 
+    font-family: var(--mono); 
+    font-size: 11px; 
+    letter-spacing: 0.08em;
+    color: var(--accent); 
+    text-transform: uppercase; 
+    margin-bottom: 9px;
+  }
+
+  .field input, .field textarea{
+    width:100%; 
+    background: transparent; 
+    border:none; border-bottom: 1px solid var(--line-bright);
+    color: var(--ink); 
+    font-family: var(--body); 
+    font-size: 15px; 
+    padding: 8px 2px;
+    resize: vertical;
+  }
+
+  .field textarea{ 
+    min-height: 90px; 
+  }
+
+  .field input:focus, .field textarea:focus{ 
+    outline:none; 
+    border-color: var(--accent); 
+  }
+
+  .field input::placeholder, .field textarea::placeholder{
+     color: var(--ink-muted); 
+     opacity: 0.6; 
+    }
+
+  .form-row{ 
+    display:grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 24px; 
+  }
+
+  @media (max-width: 700px){ 
+    .form-row{ 
+      grid-template-columns: 1fr; 
+    } 
+  }
+
+  .form-foot{ 
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+  }
+
+  .form-note{ 
+    font-family: var(--mono); 
+    font-size: 11.5px; 
+    color: var(--ink-muted); 
+  }
+
+  .form-status { min-height: 1.5em; color: var(--cyan); }
+
+  .btn:disabled{ 
+    opacity:0.5; 
+    cursor:default; 
+    transform:none; 
+  }
+
+  
+  .contact-panel{
+    border: 1px solid var(--line-bright); 
+    background: var(--surface);
+    padding: 50px; 
+    display:grid; 
+    grid-template-columns: 1fr auto; 
+    gap: 40px; 
+    align-items:center;
+  }
+
+  @media (max-width: 700px){ 
+    .contact-panel{ 
+      grid-template-columns: 1fr; text-align:left; 
+    } 
+  }
+
+  .contact-panel h2{
+     margin-bottom: 14px;
+     }
+
+  .contact-panel p{ 
+    color: var(--ink-muted); 
+    margin:0; max-width: 46ch; 
+  }
+
+  .mail-link{
+    font-family: var(--mono); 
+    font-size: 16px; 
+    color: var(--cyan); 
+    text-decoration:none;
+    border-bottom: 1px dashed var(--cyan); 
+    padding-bottom: 3px;
+  }
+
+  .mail-link:hover, .mail-link:focus-visible{ 
+    color: var(--accent); 
+    border-color: var(--accent); 
+  }
+
+  .blink{ 
+    display:inline-block; 
+    width:7px; 
+    height:7px; 
+    background: var(--cyan); 
+    margin-right:8px; 
+    border-radius:50%; 
+    animation: blink 1.6s ease-in-out infinite; 
+  }
+
+  @keyframes blink{ 
+    0%,100%{
+      opacity:1;
+    } 50%{
+      opacity:.25;
+    } 
+  }
+
+  footer{ 
+    padding: 34px 0 60px; 
+  }
+
+  footer .wrap{ 
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    flex-wrap:wrap; 
+    gap:12px; 
+  }
+
+  footer p{ 
+    font-family: var(--mono); 
+    font-size: 11.5px; 
+    color: var(--ink-muted); 
+    margin:0; 
+    letter-spacing: 0.03em; 
+  }
+
+  :focus-visible{ 
+    outline: 2px solid var(--accent); 
+    outline-offset: 3px; 
+    }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+
+  @media (max-width: 640px) {
+    .wrap { padding-inline: 20px; }
+    section { padding: 82px 0; }
+    .hero { padding-top: 92px; padding-bottom: 72px; }
+    .hero::after { right: -90px; opacity: .65; }
+    .hero-panel, .suggest-panel, .contact-panel { padding: 26px; }
+    .schematic { margin-top: 50px; }
+    .svc-card, .proj-card { padding: 26px; }
+  }
+
+</style>
+
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#main" aria-label="Xumex Tech home"><span class="mark">X</span>XUMEX TECH</a>
+    <div class="nav-right">
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#suggest">Suggest</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn btn-primary btn-sm" href="mailto:tyxzt7422@gmail.com?subject=Sponsorship%20Inquiry%20-%20Xumex%20Tech">Sponsor us</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">FIG.01 — INTRODUCTION</div>
+    <div class="hero-grid">
+      <div>
+        <h1>We engineer the <span class="accent">systems</span><br>behind what's next.</h1>
+        <p class="lede">Xumex Tech designs, builds, and maintains the software and infrastructure that technology-driven businesses run on — from first prototype to production scale.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Start a project →</a>
+          <a class="btn btn-ghost" href="#services">See what we build</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="row"><span>STATUS</span><span>OPERATIONAL</span></div>
+        <div class="row"><span>FOCUS</span><span>SOFTWARE / CLOUD / AI</span></div>
+        <div class="row"><span>ENGAGEMENT</span><span>PROJECT &amp; RETAINER</span></div>
+        <div class="row"><span>RESPONSE TIME</span><span>&lt; 24H</span></div>
+      </div>
+    </div>
+
+    <svg class="schematic" viewBox="0 0 1000 90" preserveAspectRatio="none" aria-hidden="true">
+      <path class="trace" id="tracepath" d="M0,45 L180,45 L220,15 L420,15 L460,45 L620,45 L660,75 L820,75 L860,45 L1000,45"/>
+      <circle class="node" cx="180" cy="45" r="4"/>
+      <circle class="node" cx="420" cy="15" r="4"/>
+      <circle class="node" cx="660" cy="75" r="4"/>
+      <circle class="node" cx="860" cy="45" r="4"/>
+      <text x="180" y="35">BUILD</text>
+      <text x="420" y="8">SHIP</text>
+      <text x="660" y="90">SCALE</text>
+      <text x="860" y="35">SUPPORT</text>
+    </svg>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">FIG.02 — ABOUT</div>
+        <h2>A technology partner,<br>not a vendor.</h2>
+      </div>
+      <div class="sec-note">Xumex Tech works alongside teams end-to-end — from architecture decisions to the code that ships.</div>
+    </div>
+
+    <div class="about-grid">
+      <div>
+        <p>Xumex Tech is a technology company focused on building reliable, well-engineered software. We work across the stack — applications, cloud infrastructure, data, and automation — for teams that need technology to just work.</p>
+        <p>Every engagement starts with understanding the problem, not the tech stack. We choose tools to fit the job, document our decisions, and hand over systems that are built to be maintained, not just shipped.</p>
+      </div>
+      <ul class="pillars">
+        <li><span class="idx">01</span><div><strong>Built to last</strong><span class="d">Clean architecture and documentation, so systems outlive the people who built them.</span></div></li>
+        <li><span class="idx">02</span><div><strong>Direct communication</strong><span class="d">No account layers — you talk to the people doing the work.</span></div></li>
+        <li><span class="idx">03</span><div><strong>Right-sized tech</strong><span class="d">We pick the simplest tool that solves the problem well.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">FIG.03 — SERVICES</div>
+        <h2>What we build.</h2>
+      </div>
+      <div class="sec-note">Four core capabilities, applied individually or together.</div>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc-card" data-index="01">
+        <div class="tag">01 / SOFTWARE</div>
+        <h3>Product &amp; App Engineering</h3>
+        <p>Web and mobile applications built for real usage — from MVP to a mature, maintained product.</p>
+      </div>
+      <div class="svc-card" data-index="02">
+        <div class="tag">02 / INFRASTRUCTURE</div>
+        <h3>Cloud &amp; Infrastructure</h3>
+        <p>Cloud architecture, deployment pipelines, and infrastructure that scales without surprises.</p>
+      </div>
+      <div class="svc-card" data-index="03">
+        <div class="tag">03 / AI &amp; AUTOMATION</div>
+        <h3>AI &amp; Automation</h3>
+        <p>Practical AI integrations and workflow automation that remove repetitive work from your team's day.</p>
+      </div>
+      <div class="svc-card" data-index="04">
+        <div class="tag">04 / SECURITY</div>
+        <h3>Systems &amp; Security</h3>
+        <p>Hardened, well-monitored systems — built with security and reliability as first-class requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">FIG.04 — PROJECTS</div>
+        <h2>What we've built.</h2>
+      </div>
+      <div class="sec-note">A sample of the hardware and AI systems that have come out of Xumex Tech.</div>
+    </div>
+
+    <div class="proj-list">
+      <div class="proj-card">
+        <div class="proj-idx">P.01</div>
+        <div class="proj-body">
+          <h3>AI-Driven Drone Disaster Response System</h3>
+          <p>An autonomous drone system that uses AI to survey disaster zones, identify people in need, and relay real-time data to response teams — cutting the time between disaster and rescue.</p>
+          <div class="proj-tags"><span>COMPUTER VISION</span><span>AUTONOMOUS FLIGHT</span><span>REAL-TIME DATA</span></div>
+        </div>
+        <div class="proj-status"><span class="dot"></span>ACTIVE</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-idx">P.02</div>
+        <div class="proj-body">
+          <h3>Humanoid Robot</h3>
+          <p>A humanoid platform built to research movement, balance, and interaction — a foundation for robotics that can operate safely alongside people.</p>
+          <div class="proj-tags"><span>ROBOTICS</span><span>MOTION CONTROL</span><span>AI</span></div>
+        </div>
+        <div class="proj-status"><span class="dot"></span>IN DEVELOPMENT</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-idx">P.03</div>
+        <div class="proj-body">
+          <h3>Individual Drones</h3>
+          <p>Compact, single-unit drones engineered for flexible deployment — used as standalone units or in coordination with our larger drone response system.</p>
+          <div class="proj-tags"><span>HARDWARE</span><span>FLIGHT SYSTEMS</span><span>MODULAR DESIGN</span></div>
+        </div>
+        <div class="proj-status"><span class="dot"></span>ACTIVE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="suggest">
+  <div class="wrap">
+    <div class="eyebrow">FIG.05 — SUGGEST A PROJECT</div>
+    <div class="suggest-panel">
+      <div class="suggest-top">
+        <h2>Have an idea<br>worth building?</h2>
+        <p>If you've got a problem you think AI, robotics, or software could solve — tell us about it. We review every submission and reply if it's a fit.</p>
+      </div>
+
+      <form id="suggestForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="s-name">Your name</label>
+            <input id="s-name" name="name" type="text" placeholder="Amina Okafor" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="s-email">Your email</label>
+            <input id="s-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="s-title">Project idea</label>
+          <input id="s-title" name="title" type="text" placeholder="e.g. Autonomous water-quality drone" required>
+        </div>
+        <div class="field">
+          <label for="s-details">Details</label>
+          <textarea id="s-details" name="details" placeholder="What problem does it solve, and why does it matter?" required></textarea>
+        </div>
+        <div class="form-foot">
+          <span class="form-note form-status" id="formStatus" aria-live="polite">Opens your email client, addressed to our team</span>
+          <button type="submit" class="btn btn-primary">Submit suggestion →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">FIG.06 — CONTACT</div>
+    <div class="contact-panel">
+      <div>
+        <h2>Let's talk about<br>your project.</h2>
+        <p>Tell us what you're building or what's not working. We typically reply within a day.</p>
+      </div>
+      <div>
+        <a class="mail-link" href="mailto:tyxzt7422@gmail.com"><span class="blink"></span>tyxzt7422@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 XUMEX TECH — ALL SYSTEMS OPERATIONAL</p>
+    <p>BUILT ON TRUST / SHIPPED WITH CARE</p>
+  </div>
+</footer>
+
+<script>
+
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var path = document.getElementById('tracepath');
+    if(!path) return;
+    if(reduce){ path.classList.add('active'); return; }
+    var len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+    path.getBoundingClientRect(); // force reflow
+    path.style.transition = 'stroke-dashoffset 2.1s ease-out, stroke 0.4s ease 1.6s';
+    requestAnimationFrame(function(){
+      path.style.strokeDashoffset = '0';
+      setTimeout(function(){ path.classList.add('active'); }, 1700);
+    });
+  })();
+
+  (function(){
+    var form = document.getElementById('suggestForm');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var title = form.title.value.trim();
+      var details = form.details.value.trim();
+      var status = document.getElementById('formStatus');
+      var subject = 'Project Suggestion: ' + title;
+      var body = 'From: ' + name + ' (' + email + ')\n\nIdea: ' + title + '\n\n' + details;
+      var mailto = 'mailto:tyxzt7422@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      status.textContent = 'Opening your email client…';
+      window.location.href = mailto;
+    });
+  })();
+
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = document.querySelectorAll('.sec-head, .about-grid, .svc-grid, .proj-card, .suggest-panel, .contact-panel');
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function(item){ item.classList.add('is-visible'); });
+      return;
+    }
+    items.forEach(function(item){ item.classList.add('reveal'); });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: .12 });
+    items.forEach(function(item){ observer.observe(item); });
+  })();
+</script>
+
+</body>
+</html>
